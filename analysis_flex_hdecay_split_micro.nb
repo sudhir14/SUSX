@@ -1,0 +1,1201 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     55298,       1193]
+NotebookOptionsPosition[     55022,       1179]
+NotebookOutlinePosition[     55396,       1195]
+CellTagsIndexPosition[     55353,       1192]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"Edited", " ", "on", " ", "March", " ", "17"}], ",", " ", 
+    "2021"}], " ", "*)"}], "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"gevtocm2", ":=", 
+     RowBox[{"0.3894", " ", "\[Times]", " ", 
+      SuperscriptBox["10", 
+       RowBox[{"-", "27"}]]}]}], ";", 
+    RowBox[{"nmode", "=", "9"}], ";", 
+    RowBox[{"NN", " ", "=", " ", 
+     RowBox[{"10", "^", "10"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"tag", "=", 
+     RowBox[{"{", " ", 
+      RowBox[{
+      "\"\<\[Mu](TeV)\>\"", ",", "  ", 
+       "\"\<\!\(\*SubscriptBox[\(m\), \(1\)]\)(TeV)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(m\), \(2\)]\)(TeV)\>\"", ",", " ", 
+       "\"\<tan\[Beta]\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(M\), \(X\)]\) (TeV)\>\"", ",", 
+       "\[IndentingNewLine]", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SuperscriptBox[SubscriptBox[\(\[Chi]\), \
+\(1\)], \(+\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SuperscriptBox[SubscriptBox[\(\[Chi]\), \
+\(2\)], \(+\)]]\)(TeV)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(M\), \(gluino\)]\)(TeV)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] \[Gamma]\[Gamma]\)]\)\>\"", 
+       ",", " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] bb\)]\)\>\"", ",",
+        " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] cc\)]\)\>\"", ",", 
+       "  ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] gg\)]\)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] \[Tau]\[Tau]\)]\)\>\"", ",",
+        "  ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] \[Mu]\[Mu]\)]\)\>\"",
+        ",", " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] ss\)]\)\>\"", 
+       ",", " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] tt\)]\)\>\"", ",",
+        "\[IndentingNewLine]", " ", 
+       "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] WW\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] Z\[Gamma]\)]\)\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] ZZ\)]\)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(m\), \(3\)]\)(TeV)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(m\), \(h\)]\)(GeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), \(S\)]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SubscriptBox[\(\[Chi]\), \
+\(10\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SubscriptBox[\(\[Chi]\), \
+\(20\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SubscriptBox[\(\[Chi]\), \
+\(30\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SubscriptBox[\(\[Chi]\), \
+\(40\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(\[CapitalGamma]\), \(h\)]\) (GeV)\>\"", ",", 
+       "  ", "\"\<\!\(\*SubscriptBox[\(\[Delta]\), \(\[Rho]\)]\)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(a\), \(\[Mu]\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(B\), \(s\)]\)\[Rule]\[Mu]\[Mu]\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(\[CapitalOmega]\), \(relic\)]\)\>\"", 
+       ",", " ", "\"\<\!\(\*SubscriptBox[\(p\), \(SI\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(n\), \(SI\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(p\), \(SD\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(n\), \(SD\)]\)\>\""}], "}"}]}], ";"}], "\n", 
+   RowBox[{
+    RowBox[{"lbl", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<mu\>\"", ",", "\"\<m1\>\"", ",", "\"\<m2\>\"", ",", "\"\<tb\>\"", 
+       ",", "\"\<mx\>\"", ",", "\"\<c1\>\"", ",", " ", "\"\<c2\>\"", ",", 
+       " ", "\"\<gl\>\"", ",", "\"\<haa\>\"", ",", " ", "\"\<hbb\>\"", ",", 
+       " ", "\[IndentingNewLine]", "\"\<hcc\>\"", ",", " ", "\"\<hgg\>\"", 
+       ",", "\"\<hll\>\"", ",", "\"\<hmm\>\"", ",", " ", "\"\<hss\>\"", ",", 
+       " ", "\"\<htt\>\"", ",", " ", "\"\<hww\>\"", ",", " ", "\"\<hza\>\"", 
+       ",", " ", "\"\<hzz\>\"", ",", " ", "\"\<m3\>\"", ",", " ", 
+       "\"\<mh\>\"", ",", " ", "\"\<ms\>\"", ",", " ", "\"\<n1\>\"", ",", 
+       " ", "\"\<n2\>\"", ",", " ", "\"\<n3\>\"", ",", " ", "\"\<n4\>\"", 
+       ",", "\"\<wh\>\"", ",", " ", "\"\<drho\>\"", ",", " ", "\"\<amu\>\"", 
+       ",", "\"\<bsmm\>\"", ",", "  ", "\"\<omg\>\"", ",", " ", "\"\<psi\>\"",
+        ",", " ", "\"\<nsi\>\"", ",", " ", "\"\<psd\>\"", ",", " ", 
+       "\"\<nsd\>\""}], "}"}]}], ";"}], " ", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"datar", "=", 
+     RowBox[{"Import", "[", 
+      RowBox[{
+      "\"\<C:\\\\Users\\\\Sudhir\\\\AMU\\\\y20\\\\softwares\\\\EasyScan_HEP-\
+master\\\\bin\\\\RandomData_micro.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data", "=", 
+     RowBox[{"datar", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", 
+        RowBox[{"{", 
+         RowBox[{
+         "1", ",", "2", ",", "3", ",", "20", ",", "22", ",", "4", ",", 
+          "\[IndentingNewLine]", "8", ",", "23", ",", "24", ",", "25", ",", 
+          "26", ",", "6", ",", "7", ",", "21", ",", "27", ",", " ", "9", ",", 
+          "\[IndentingNewLine]", "16", ",", "14", ",", "13", ",", "15", ",", 
+          "10", ",", "11", ",", "12", ",", " ", "18", ",", "17", ",", "18", 
+          ",", "\[IndentingNewLine]", " ", "27", ",", " ", "28", ",", " ", 
+          "29", ",", " ", "30", ",", " ", "31", ",", " ", "32", ",", " ", 
+          "33", ",", " ", "34"}], "}"}]}], "]"}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"tag0", "=", 
+     RowBox[{"{", 
+      RowBox[{
+      "\"\<\[Mu](TeV)\>\"", ",", "  ", 
+       "\"\<\!\(\*SubscriptBox[\(m\), \(1\)]\)(TeV)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(m\), \(2\)]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(m\), \(3\)]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(log\), \(10\)]\)(\!\(\*SubscriptBox[\(M\), \
+\(S\)]\)) (GeV)\>\"", ",", "\"\<tan\[Beta]\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), \(gluino\)]\)(TeV)\>\"", ",", 
+       "\[IndentingNewLine]", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SubscriptBox[\(\[Chi]\), \
+\(10\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SubscriptBox[\(\[Chi]\), \
+\(20\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SubscriptBox[\(\[Chi]\), \
+\(30\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SubscriptBox[\(\[Chi]\), \
+\(40\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SuperscriptBox[SubscriptBox[\(\[Chi]\), \
+\(1\)], \(+\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(M\), SuperscriptBox[SubscriptBox[\(\[Chi]\), \
+\(2\)], \(+\)]]\)(TeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(m\), \(h\)]\)(GeV)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(\[CapitalGamma]\), \(h\)]\) (GeV)\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] tt\)]\)\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] \[Mu]\[Mu]\)]\)\>\"", 
+       ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] \[Tau]\[Tau]\)]\)\>\"", ",",
+        " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] ss\)]\)\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] bb\)]\)\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] cc\)]\)\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] \[Gamma]\[Gamma]\)]\)\>\"", 
+       ",", " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] gg\)]\)\>\"", ",",
+        " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] ZZ\)]\)\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] WW\)]\)\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(B\), \(h \[Rule] Z\[Gamma]\)]\)\>\"", 
+       ",", " ", "\"\<\!\(\*SubscriptBox[\(\[Delta]\), \(\[Rho]\)]\)\>\"", 
+       ",", "\"\<\!\(\*SubscriptBox[\(a\), \(\[Mu]\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(B\), \(s\)]\)\[Rule]\[Mu]\[Mu]\>\"", ",", 
+       "\"\<\!\(\*SubscriptBox[\(\[CapitalOmega]\), \(relic\)]\)\>\"", ",", 
+       " ", "\"\<\!\(\*SubscriptBox[\(p\), \(SI\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(n\), \(SI\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(p\), \(SD\)]\)\>\"", ",", " ", 
+       "\"\<\!\(\*SubscriptBox[\(n\), \(SD\)]\)\>\""}], "}"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"datar0", "=", "data"}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"data0", "=", 
+     RowBox[{"Cases", "[", 
+      RowBox[{"datar0", ",", 
+       RowBox[{"{", 
+        RowBox[{"__", "?", "NumericQ"}], "}"}]}], "]"}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"WHiggs0", "    ", "=", 
+     RowBox[{"data0", "[", 
+      RowBox[{"[", 
+       RowBox[{"All", ",", 
+        RowBox[{"Range", "[", 
+         RowBox[{"17", ",", 
+          RowBox[{"17", "+", 
+           RowBox[{"(", 
+            RowBox[{"nmode", "-", "1"}], ")"}]}], ",", "1"}], "]"}]}], "]"}], 
+      "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"WHiggs", "       ", "=", 
+     RowBox[{
+      RowBox[{"WHiggs0", "[", 
+       RowBox[{"[", 
+        RowBox[{"All", ",", "All"}], "]"}], "]"}], "/.", 
+      RowBox[{
+       RowBox[{"x_", "/;", 
+        RowBox[{"x", "==", "0"}]}], "\[Rule]", "1"}]}]}], ";"}], 
+   "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"\[CapitalOmega]", ",", " ", "H"}], "]"}], " ", "=", " ", 
+     RowBox[{"0.5", 
+      RowBox[{"Log", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"2", "\[Pi]", " ", "NN", " ", "E"}], ")"}], "^", 
+         RowBox[{"(", 
+          RowBox[{"nmode", "-", "1"}], ")"}]}], "  ", 
+        RowBox[{"Product", "[", 
+         RowBox[{
+          RowBox[{"WHiggs", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "k"}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", "1", ",", "nmode"}], "}"}]}], "]"}]}], "]"}]}]}],
+     ";"}], "\n", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Subscript", "[", 
+      RowBox[{"\[CapitalOmega]", ",", " ", "A"}], "]"}], " ", "=", " ", 
+     RowBox[{"-", 
+      RowBox[{"Log", "[", 
+       RowBox[{"Product", "[", 
+        RowBox[{
+         RowBox[{"WHiggs", "[", 
+          RowBox[{"[", 
+           RowBox[{"All", ",", "k"}], "]"}], "]"}], ",", 
+         RowBox[{"{", 
+          RowBox[{"k", ",", "1", ",", "nmode"}], "}"}]}], "]"}], "]"}]}]}], 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"entH", "=", " ", 
+     RowBox[{"0.5", 
+      RowBox[{"Log", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"(", 
+          RowBox[{"2", "\[Pi]", " ", "NN", " ", "E"}], ")"}], "^", 
+         RowBox[{"(", 
+          RowBox[{"nmode", "-", "1"}], ")"}]}], "  ", 
+        RowBox[{"Product", "[", 
+         RowBox[{
+          RowBox[{"data0", "[", 
+           RowBox[{"[", 
+            RowBox[{"All", ",", "k"}], "]"}], "]"}], ",", 
+          RowBox[{"{", 
+           RowBox[{"k", ",", "18", ",", 
+            RowBox[{"18", "+", 
+             RowBox[{"(", 
+              RowBox[{"nmode", "-", "1"}], ")"}]}], ",", "1"}], "}"}]}], 
+         "]"}]}], "]"}]}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"entrH", " ", "=", " ", 
+     RowBox[{"Exp", "[", "entH", "]"}]}], ";"}], "\[IndentingNewLine]", 
+   RowBox[{"inps", "=", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ListLogLinearPlot", "[", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "5"}], "]"}], "]"}], ",", "entrH"}], 
+              "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "5", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "1"}], "]"}], "]"}], "/", "1000."}], 
+               ",", " ", "entrH"}], "  ", "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "2"}], "]"}], "]"}], "/", "1000."}], 
+               ",", " ", "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "3"}], "]"}], "]"}], "/", "1000."}], 
+               ",", " ", "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "6"}], "]"}], "]"}], ",", 
+               "                ", "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "6", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", "1", "}"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"outs1", "=", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"Abs", "[", 
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "14"}], "]"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "14", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Abs", "[", 
+                 RowBox[{"data0", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"All", ",", "8"}], "]"}], "]"}], "]"}], "/", 
+                "1000."}], ",", " ", "entrH"}], "  ", "}"}], "]"}], "]"}], 
+           ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "8", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"Abs", "[", " ", 
+                 RowBox[{"data0", "[", 
+                  RowBox[{"[", 
+                   RowBox[{"All", ",", "12"}], "]"}], "]"}], "]"}], "/", 
+                "1000."}], ",", " ", "entrH"}], "  ", "}"}], "]"}], "]"}], 
+           ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "12", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "13"}], "]"}], "]"}], "/", "1000."}], 
+               ",", " ", "entrH"}], "  ", "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "13", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", "1", "}"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"outs2", "=", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "27"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "27", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "28"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "28", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "29"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "  ", "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "29", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListLogLinearPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "30"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "  ", "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "30", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", "1", "}"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"outs3", "=", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ListLogLinearPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"Abs", "[", 
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "31"}], "]"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "31", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListLogLinearPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"Abs", "[", 
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "32"}], "]"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "32", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListLogLinearPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Abs", "[", " ", 
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "33"}], "]"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "33", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListLogLinearPlot", "[", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", 
+              RowBox[{
+               RowBox[{"Abs", "[", " ", 
+                RowBox[{"data0", "[", 
+                 RowBox[{"[", 
+                  RowBox[{"All", ",", "34"}], "]"}], "]"}], "]"}], ",", " ", 
+               "entrH"}], "}"}], "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "34", "]"}], "]"}], ",", 
+              "\"\<\[CapitalOmega]\>\""}], "}"}]}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", "1", "}"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"outh1", "=", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Sort", "[", 
+            RowBox[{"Transpose", "[", 
+             RowBox[{"{", " ", 
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "6"}], "]"}], "]"}], ",", 
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "14"}], "]"}], "]"}]}], " ", "}"}], 
+             "]"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "6", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "5"}], "]"}], "]"}], ",", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "14"}], "]"}], "]"}]}], " ", "}"}], "]"}],
+            ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "5", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "1"}], "]"}], "]"}], "/", "1000"}], ",", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "14"}], "]"}], "]"}]}], " ", "}"}], "]"}],
+            ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}]}], "]"}], ",", " ", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "2"}], "]"}], "]"}], "/", "1000."}], ",", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "14"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListPlot", "[", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "3"}], "]"}], "]"}], "/", "1000."}], ",",
+               " ", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "14"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}]}], "]"}]}], "}"}], 
+       ",", "\[IndentingNewLine]", 
+       RowBox[{"{", "1", "}"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"outr1", "=", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"ListLogLogPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "8"}], "]"}], "]"}], "/", "1000."}], ",",
+               " ", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "30"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "8", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "30", "]"}], "]"}]}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListLogLogPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "1"}], "]"}], "]"}], "/", "1000."}], ",",
+               " ", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", " ", "30"}], "]"}], "]"}]}], "}"}], "]"}],
+            ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "1", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "30", "]"}], "]"}]}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListLogLogPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "2"}], "]"}], "]"}], "/", "1000."}], ",",
+               " ", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "30"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "2", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "30", "]"}], "]"}]}], "}"}]}]}], "]"}], ",", 
+         "\[IndentingNewLine]", 
+         RowBox[{"ListLogLogPlot", "[", " ", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "3"}], "]"}], "]"}], "/", "1000."}], ",",
+               " ", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "30"}], "]"}], "]"}]}], "}"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "200"}], ",", " ", 
+           RowBox[{"Frame", "\[Rule]", "True"}], ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "3", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "30", "]"}], "]"}]}], "}"}]}]}], "]"}]}], 
+        "\[IndentingNewLine]", "}"}], ",", 
+       RowBox[{"{", "1", "}"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"styles", "=", " ", 
+     RowBox[{"{", 
+      RowBox[{
+       RowBox[{"PlotLegends", "->", "Automatic"}], ",", 
+       RowBox[{"Axes", " ", "->", "True"}], ",", 
+       RowBox[{"LabelStyle", "->", 
+        RowBox[{"Directive", "[", 
+         RowBox[{"Blue", ",", "Bold"}], "]"}]}], ",", 
+       RowBox[{"ColorFunction", "\[Rule]", " ", "Hue"}]}], "}"}]}], ";"}], 
+   "\n", 
+   RowBox[{"cp0", "=", 
+    RowBox[{"Grid", "[", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"{", "\[IndentingNewLine]", " ", 
+        RowBox[{
+         RowBox[{"ListContourPlot", "[", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "6"}], "]"}], "]"}], ",", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "5"}], "]"}], "]"}], ",", "entrH"}], " ", 
+             "}"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "300"}], ",", "styles", ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "6", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "5", "]"}], "]"}]}], "}"}]}], ",", " ", 
+           RowBox[{"PlotLabel", "->", "\"\<\[CapitalOmega]\>\""}]}], "]"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"ListContourPlot", "[", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{"Log10", "[", 
+               RowBox[{"data0", "[", 
+                RowBox[{"[", 
+                 RowBox[{"All", ",", "5"}], "]"}], "]"}], "]"}], ",", " ", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "14"}], "]"}], "]"}], ",", "entrH"}], " ",
+              "}"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "300"}], ",", "styles", ",", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "5", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}], ",", " ", 
+           RowBox[{"PlotLabel", "->", "\"\<\[CapitalOmega]\>\""}]}], "]"}], 
+         ",", "\[IndentingNewLine]", 
+         RowBox[{"ListContourPlot", "[", 
+          RowBox[{
+           RowBox[{"Transpose", "[", 
+            RowBox[{"{", " ", 
+             RowBox[{
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "6"}], "]"}], "]"}], ",", " ", 
+              RowBox[{"data0", "[", 
+               RowBox[{"[", 
+                RowBox[{"All", ",", "14"}], "]"}], "]"}], ",", "entrH"}], " ",
+              "}"}], "]"}], ",", 
+           RowBox[{"ImageSize", "\[Rule]", "300"}], ",", "styles", ",", " ", 
+           RowBox[{"FrameLabel", "\[Rule]", 
+            RowBox[{"{", 
+             RowBox[{
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "6", "]"}], "]"}], ",", 
+              RowBox[{"tag0", "[", 
+               RowBox[{"[", "14", "]"}], "]"}]}], "}"}]}], ",", " ", 
+           RowBox[{"PlotLabel", "->", "\"\<\[CapitalOmega]\>\""}]}], "]"}]}], 
+        "}"}], ",", "\[IndentingNewLine]", 
+       RowBox[{"{", "1", "}"}]}], "]"}], "]"}]}], "\[IndentingNewLine]", 
+   RowBox[{"(*", "\[IndentingNewLine]", 
+    RowBox[{
+     RowBox[{"nh0", "=", "14"}], ";", "\[IndentingNewLine]", 
+     RowBox[{"cp1", "=", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"ListContourPlot", "[", "\n", 
+            RowBox[{
+             RowBox[{"data0", "[", 
+              RowBox[{"[", 
+               RowBox[{"All", ",", " ", 
+                RowBox[{"{", 
+                 RowBox[{
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "1", "]"}], "]"}], ",", " ", 
+                  RowBox[{"#", "[", 
+                   RowBox[{"[", "2", "]"}], "]"}], ",", " ", "nh0"}], "}"}]}],
+                "]"}], "]"}], ",", 
+             RowBox[{"PlotLegends", "\[Rule]", "Automatic"}], ",", 
+             RowBox[{"FrameLabel", " ", "->", " ", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                 RowBox[{"Style", "[", 
+                  RowBox[{"#", ",", " ", "10", ",", " ", "Bold"}], "]"}], " ",
+                  "&"}], " ", "/@", 
+                RowBox[{"tag0", "[", 
+                 RowBox[{"[", "#", "]"}], "]"}]}], ")"}]}], ",", "\n", 
+             RowBox[{"PlotLabel", " ", "->", " ", 
+              RowBox[{"Style", "[", 
+               RowBox[{
+                RowBox[{"\"\<For \>\"", " ", "<>", " ", 
+                 RowBox[{"tag0", "[", 
+                  RowBox[{"[", "nh0", "]"}], "]"}]}], ",", " ", "11", ",", 
+                " ", "Bold"}], "]"}]}]}], "]"}], " ", "&"}], " ", "/@", 
+          RowBox[{"Subsets", "[", 
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"1", ",", "2", ",", "3", ",", "5", ",", "6"}], "}"}], 
+            ",", " ", 
+            RowBox[{"{", "2", "}"}]}], "]"}]}], ")"}], " ", "//", 
+        RowBox[{
+         RowBox[{"Partition", "[", 
+          RowBox[{"#", ",", " ", "4"}], "]"}], " ", "&"}]}], " ", "//", 
+       RowBox[{
+        RowBox[{
+         RowBox[{"Grid", "[", 
+          RowBox[{"#", ",", " ", 
+           RowBox[{"Spacings", " ", "->", " ", 
+            RowBox[{"{", 
+             RowBox[{"1", ",", " ", "1"}], "}"}]}]}], "]"}], " ", "&"}], " ", 
+        "\[IndentingNewLine]", 
+        RowBox[{"Export", "[", 
+         RowBox[{
+         "\"\<C:\\\\Users\\\\Sudhir\\\\AMU\\\\y20\\\\softwares\\\\EasyScan_\
+HEP-master\\\\bin\\\\split_old\\\\pfv0es.png\>\"", ",", " ", "gp0"}], "]"}], 
+        "\n", 
+        RowBox[{"Export", "[", 
+         RowBox[{
+         "\"\<C:\\\\Users\\\\Sudhir\\\\AMU\\\\y20\\\\softwares\\\\EasyScan_\
+HEP-master\\\\bin\\\\split_old\\\\cfv0es.png\>\"", ",", " ", "cp0"}], "]"}], 
+        "\[IndentingNewLine]", 
+        RowBox[{"Export", "[", 
+         RowBox[{
+         "\"\<C:\\\\Users\\\\Sudhir\\\\AMU\\\\y20\\\\softwares\\\\EasyScan_\
+HEP-master\\\\bin\\\\split_old\\\\cfv1es.png\>\"", ",", " ", "cp1"}], 
+         "]"}]}]}]}]}], "\[IndentingNewLine]", "*)"}]}]}]], "Input",
+ CellChangeTimes->{
+  3.8057934850761185`*^9, {3.8057935590494432`*^9, 3.8057938308707476`*^9}, {
+   3.805793997035933*^9, 3.805794021770157*^9}, {3.8057940521998835`*^9, 
+   3.8057940534340024`*^9}, {3.8057940868070126`*^9, 3.805794166228322*^9}, {
+   3.8057942203636465`*^9, 3.805794307108406*^9}, {3.805794368205745*^9, 
+   3.8057943916051826`*^9}, {3.805794435266133*^9, 3.8057944904531436`*^9}, {
+   3.805796835108159*^9, 3.8057968520260725`*^9}, {3.805796891079937*^9, 
+   3.8057971724280453`*^9}, {3.8057972045294952`*^9, 3.805797266138029*^9}, {
+   3.805797307266064*^9, 3.8057975476112833`*^9}, {3.8057976498950377`*^9, 
+   3.805797682101544*^9}, {3.805797760544986*^9, 3.805797761419839*^9}, {
+   3.8057978122422714`*^9, 3.8057978206933823`*^9}, {3.805797865198753*^9, 
+   3.8057979748790884`*^9}, {3.8057980087673388`*^9, 
+   3.8057981065040507`*^9}, {3.8057981475116153`*^9, 
+   3.8057982024375153`*^9}, {3.805798242849925*^9, 3.805798302896144*^9}, {
+   3.8057983374146996`*^9, 3.805798362803462*^9}, {3.8057984026324854`*^9, 
+   3.8057984749269524`*^9}, {3.8057985624170113`*^9, 3.805798563635478*^9}, 
+   3.8057986357983327`*^9, {3.805798707511829*^9, 3.805798762513955*^9}, {
+   3.8057987955908785`*^9, 3.8057987964812593`*^9}, {3.805798831244101*^9, 
+   3.805798864979972*^9}, {3.8057988963788643`*^9, 3.8057988990188723`*^9}, {
+   3.8057989742533445`*^9, 3.80579898782829*^9}, {3.80579902047456*^9, 
+   3.80579902642633*^9}, {3.805799112288864*^9, 3.805799112710605*^9}, {
+   3.805799183363043*^9, 3.805799184675235*^9}, {3.8057992801206083`*^9, 
+   3.8057992831823797`*^9}, {3.805799339171729*^9, 3.805799450760765*^9}, {
+   3.805799520284257*^9, 3.8057995312942467`*^9}, {3.805799590870371*^9, 
+   3.8057995915889235`*^9}, {3.8057996901490765`*^9, 3.8057997313724823`*^9}, 
+   3.805799799596034*^9, {3.8058000181703835`*^9, 3.805800099441079*^9}, {
+   3.8058001396059875`*^9, 3.805800164771349*^9}, {3.8058002015535145`*^9, 
+   3.805800202178628*^9}, {3.8058003559907446`*^9, 3.8058003576931267`*^9}, {
+   3.8058007233656397`*^9, 3.8058007428217945`*^9}, {3.805800785215435*^9, 
+   3.8058008379392014`*^9}, {3.8058008829029837`*^9, 3.80580088600081*^9}, {
+   3.805800957899187*^9, 3.805800980077462*^9}, {3.8058011684098988`*^9, 
+   3.8058011782164984`*^9}, {3.8058012172853203`*^9, 
+   3.8058012227996535`*^9}, {3.8058013114763765`*^9, 3.805801319208943*^9}, {
+   3.8058013499078903`*^9, 3.8058013514856424`*^9}, {3.8058013975816936`*^9, 
+   3.805801399069977*^9}, {3.805801476118674*^9, 3.805801491334525*^9}, {
+   3.8058015369886775`*^9, 3.80580153747294*^9}, {3.80580212666256*^9, 
+   3.805802142713224*^9}, {3.8058021848104258`*^9, 3.8058023676755257`*^9}, {
+   3.8058024037516055`*^9, 3.8058024050637636`*^9}, {3.8058025461915703`*^9, 
+   3.8058025489721727`*^9}, {3.8058026423414345`*^9, 
+   3.8058026551333923`*^9}, {3.8058029858894143`*^9, 
+   3.8058031295672503`*^9}, {3.8058034014964113`*^9, 3.805803401746395*^9}, {
+   3.8058046567629347`*^9, 3.8058046626572666`*^9}, {3.8058047261816196`*^9, 
+   3.805804732377185*^9}, {3.8058048264801397`*^9, 3.8058048274486637`*^9}, {
+   3.8058048745930986`*^9, 3.805804878264161*^9}, {3.8058049241449757`*^9, 
+   3.805804924519887*^9}, {3.805805017909119*^9, 3.8058051276886263`*^9}, {
+   3.805805268356599*^9, 3.8058053206585608`*^9}, {3.8058053905444007`*^9, 
+   3.805805439921258*^9}, {3.8058054730837727`*^9, 3.805805511909978*^9}, {
+   3.8058055508666306`*^9, 3.805805625747957*^9}, {3.8058056710516853`*^9, 
+   3.8058056719421034`*^9}, {3.805805786371244*^9, 3.8058058242710476`*^9}, {
+   3.8058059596665363`*^9, 3.8058060164486685`*^9}, {3.8058060592187595`*^9, 
+   3.8058061209077544`*^9}, {3.8058061585033207`*^9, 
+   3.8058062320238442`*^9}, {3.805806263620316*^9, 3.8058062857045135`*^9}, {
+   3.805806333142066*^9, 3.805806339251524*^9}, {3.8058063926303153`*^9, 
+   3.8058064060208473`*^9}, {3.80580647711948*^9, 3.8058064783536096`*^9}, {
+   3.805806516540561*^9, 3.8058065778003182`*^9}, {3.805806619728305*^9, 
+   3.805806620649927*^9}, {3.805806667650917*^9, 3.8058066682288704`*^9}, {
+   3.8058067449708414`*^9, 3.8058068557737722`*^9}, {3.8058068959189034`*^9, 
+   3.8058069206872363`*^9}, {3.8058069535623183`*^9, 
+   3.8058069593795424`*^9}, {3.8058069939914527`*^9, 
+   3.8058069957722416`*^9}, {3.805807207130858*^9, 3.805807219042366*^9}, {
+   3.8058073026075125`*^9, 3.805807341692498*^9}, {3.805807421255783*^9, 
+   3.805807437555386*^9}, {3.8058075219617834`*^9, 3.8058075651472993`*^9}, 
+   3.805807607747464*^9, {3.805807705950548*^9, 3.8058077467340407`*^9}, {
+   3.805807805437394*^9, 3.805807806359022*^9}, {3.805807917629671*^9, 
+   3.8058079255341005`*^9}, {3.8058079681687765`*^9, 
+   3.8058079686530714`*^9}, {3.805808003884735*^9, 3.8058080344814386`*^9}, {
+   3.8058080899120097`*^9, 3.805808100380881*^9}, {3.8058081631143007`*^9, 
+   3.805808218363944*^9}, {3.805808583806258*^9, 3.805808607786024*^9}, {
+   3.8058086473292103`*^9, 3.8058086514844885`*^9}, {3.8058087986149693`*^9, 
+   3.805808811411957*^9}, {3.805808864411915*^9, 3.805808867353713*^9}, {
+   3.805808924366021*^9, 3.805808958647699*^9}, {3.8058089939336343`*^9, 
+   3.8058090649062147`*^9}, 3.805809141044075*^9, 3.805809799549266*^9, {
+   3.8058098910119376`*^9, 3.805809892167917*^9}, {3.805809995874839*^9, 
+   3.8058100213155885`*^9}, {3.8058100604940877`*^9, 
+   3.8058100610408363`*^9}, {3.805810091337693*^9, 3.805810103256745*^9}, 
+   3.80581013817898*^9, {3.8058101739986467`*^9, 3.8058102272305717`*^9}, {
+   3.80581027530373*^9, 3.805810330177889*^9}, {3.8058103789727974`*^9, 
+   3.8058103817065325`*^9}, {3.8058104510057135`*^9, 3.805810581529897*^9}, {
+   3.805810616905886*^9, 3.80581062045193*^9}, {3.8058106506610312`*^9, 
+   3.805810674868558*^9}, {3.8058111012666187`*^9, 3.80581110256319*^9}, {
+   3.805811259274124*^9, 3.805811263257532*^9}, {3.8058112968616247`*^9, 
+   3.805811300553274*^9}, 3.8058113489521255`*^9, {3.8058113995336213`*^9, 
+   3.8058114070943837`*^9}, {3.8058114441854525`*^9, 3.8058114770286837`*^9}, 
+   3.805811513644114*^9, {3.805811546026023*^9, 3.8058115545740037`*^9}, 
+   3.8058118355937853`*^9, 3.805811873874139*^9, 3.80581193113157*^9, {
+   3.80581198937117*^9, 3.805811998087672*^9}, 3.805812047120347*^9, 
+   3.8058120997613044`*^9, {3.805812139916956*^9, 3.805812286777048*^9}, {
+   3.8058123184362803`*^9, 3.8058123253256106`*^9}, {3.805840482603181*^9, 
+   3.805840527408032*^9}, {3.8058405607961497`*^9, 3.805840569600831*^9}, {
+   3.805840602332615*^9, 3.8058406418900585`*^9}, {3.805840695742942*^9, 
+   3.805840726501035*^9}, {3.805840790135236*^9, 3.8058407937998967`*^9}, {
+   3.805841547857175*^9, 3.805841548135127*^9}, {3.805842018110696*^9, 
+   3.8058420310083*^9}, {3.8058420649088445`*^9, 3.805842065525405*^9}, {
+   3.8058421306597857`*^9, 3.805842163236044*^9}, {3.8058422589929647`*^9, 
+   3.805842292628475*^9}, {3.8058423916903095`*^9, 3.8058423924905834`*^9}, {
+   3.805843459939086*^9, 3.80584346036067*^9}, {3.8058435744503155`*^9, 
+   3.805843601051076*^9}, {3.8058436516729107`*^9, 3.8058437534621363`*^9}, {
+   3.805843829055056*^9, 3.805843891719555*^9}, {3.8058440187573504`*^9, 
+   3.80584402894905*^9}, {3.8058440843389187`*^9, 3.805844085660367*^9}, {
+   3.8058441529176598`*^9, 3.80584418693687*^9}, {3.805844245095501*^9, 
+   3.805844344910989*^9}, {3.8058467647597466`*^9, 3.8058467671929846`*^9}, {
+   3.8058468085567975`*^9, 3.8058468510903563`*^9}, {3.8058469097186937`*^9, 
+   3.8058469163473096`*^9}, {3.805848688768485*^9, 3.805848715152955*^9}, {
+   3.805849130235553*^9, 3.8058492138731346`*^9}, {3.8058493539995704`*^9, 
+   3.8058493562947884`*^9}, {3.8058494059303226`*^9, 3.805849406055298*^9}, {
+   3.805855336177913*^9, 3.805855338279895*^9}, {3.805865885371853*^9, 
+   3.8058658921968994`*^9}, {3.805867210952115*^9, 3.805867240469241*^9}, {
+   3.805878104770969*^9, 3.805878136352104*^9}, {3.8063123704758263`*^9, 
+   3.806312371724841*^9}, {3.8063278784729786`*^9, 3.8063278810624876`*^9}, {
+   3.8248528480471306`*^9, 3.8248528559515467`*^9}, {3.824852962848961*^9, 
+   3.824853084222371*^9}, {3.8248532937454643`*^9, 3.824853299306647*^9}, {
+   3.8248533943037663`*^9, 3.8248533988535724`*^9}, {3.824853438902204*^9, 
+   3.824853449274749*^9}, {3.824853617226159*^9, 3.824853625614797*^9}, {
+   3.824853684827546*^9, 3.8248537566750135`*^9}, {3.8248538151807013`*^9, 
+   3.824853816196086*^9}, {3.8248539103100433`*^9, 3.8248539107943053`*^9}, {
+   3.824853957387694*^9, 3.824853960058935*^9}, {3.8248540298613343`*^9, 
+   3.8248540539542403`*^9}, {3.824854215799887*^9, 3.824854274807868*^9}, {
+   3.8248544562619658`*^9, 3.8248544593081207`*^9}, {3.8248545115612345`*^9, 
+   3.8248545762792025`*^9}, {3.8248553590464582`*^9, 3.824855471238121*^9}, {
+   3.8248570540721416`*^9, 3.8248570544158063`*^9}, {3.824857103092391*^9, 
+   3.824857117885726*^9}, {3.8248575627073793`*^9, 3.8248575691902337`*^9}, {
+   3.824857915456645*^9, 3.8248579425991125`*^9}, {3.82485806495039*^9, 
+   3.8248580859142127`*^9}, {3.82485818865271*^9, 3.824858199962497*^9}, {
+   3.8248582574847937`*^9, 3.82485826046846*^9}, {3.8248585174038534`*^9, 
+   3.824858577141687*^9}, {3.82485864684169*^9, 3.8248586713118763`*^9}, {
+   3.8248587092601995`*^9, 3.8248587265061164`*^9}, {3.8248601692976513`*^9, 
+   3.8248601756398625`*^9}, {3.8249449487739067`*^9, 
+   3.8249449538976755`*^9}, {3.824945010161334*^9, 3.8249451360483046`*^9}, {
+   3.8249451743910694`*^9, 3.824945219057989*^9}, {3.82494528427962*^9, 
+   3.824945287841319*^9}, {3.8249453803431425`*^9, 3.824945518567356*^9}, {
+   3.8249456338348365`*^9, 3.8249457995710106`*^9}, {3.8249459152568135`*^9, 
+   3.824945922005231*^9}, {3.8249460224308276`*^9, 3.824946025883143*^9}, 
+   3.8249461333552575`*^9, {3.824946375781534*^9, 3.8249464702991447`*^9}, 
+   3.8249466507563715`*^9, {3.8249467178306537`*^9, 3.824946769954808*^9}, {
+   3.8249468315707345`*^9, 3.8249468397095547`*^9}, {3.8249468769669857`*^9, 
+   3.824946945714238*^9}, {3.8249469823368*^9, 3.824947085568286*^9}, {
+   3.82494714303553*^9, 3.8249473151594267`*^9}, {3.8249473459299564`*^9, 
+   3.824947407217802*^9}, {3.8249474430037484`*^9, 3.824947549763399*^9}, {
+   3.8249476801442003`*^9, 3.8249476804878693`*^9}, {3.824947724966856*^9, 
+   3.8249477584972024`*^9}, {3.8249478458615494`*^9, 
+   3.8249478492201366`*^9}, {3.824948097925559*^9, 3.824948101502846*^9}, {
+   3.824948181961441*^9, 3.8249482539149046`*^9}, {3.824948433881728*^9, 
+   3.8249484477526026`*^9}, {3.824948716501219*^9, 3.824948721359454*^9}, {
+   3.824948804317529*^9, 3.824948812466736*^9}, {3.8249488524815283`*^9, 
+   3.8249488654649343`*^9}, {3.824948907520593*^9, 3.824948912722498*^9}, {
+   3.8249490036745367`*^9, 3.8249490263496723`*^9}, 3.8249490597863693`*^9, 
+   3.8249490908257947`*^9, {3.8249491571901054`*^9, 3.8249492744737206`*^9}, {
+   3.824949369871251*^9, 3.824949389397923*^9}, {3.8249495615483522`*^9, 
+   3.8249495940252485`*^9}, {3.8249496993517466`*^9, 
+   3.8249497040225296`*^9}, {3.824949734401124*^9, 3.824949745586032*^9}, {
+   3.824949851952693*^9, 3.8249499233639464`*^9}, {3.824949963285365*^9, 
+   3.8249499672532177`*^9}, {3.8249500176218524`*^9, 3.824950056095887*^9}, {
+   3.824950108690428*^9, 3.8249502531176157`*^9}, {3.8249502832459126`*^9, 
+   3.824950291259308*^9}, {3.824950359489803*^9, 3.8249503775642347`*^9}, {
+   3.8249504242368975`*^9, 3.824950447337284*^9}, {3.824950504907937*^9, 
+   3.8249505814338093`*^9}, {3.824950624509445*^9, 3.8249506463481092`*^9}, {
+   3.824950738165613*^9, 3.824950758973235*^9}, {3.8249508409699917`*^9, 
+   3.8249508807714357`*^9}, {3.8249509351420474`*^9, 
+   3.8249509396097507`*^9}, {3.824950987590649*^9, 3.824950990418112*^9}, {
+   3.8249511858602896`*^9, 3.8249511990235095`*^9}, {3.8249512796296277`*^9, 
+   3.824951283160015*^9}, {3.8249513640360003`*^9, 3.8249513913320303`*^9}, {
+   3.824951539404645*^9, 3.8249515454969673`*^9}, {3.8249516257328157`*^9, 
+   3.8249516635965776`*^9}, {3.82495171364279*^9, 3.824951790185275*^9}, 
+   3.8249520932279396`*^9, {3.824952243202707*^9, 3.8249522587459393`*^9}, {
+   3.8249569847360888`*^9, 3.8249569980922995`*^9}, {3.824957071373269*^9, 
+   3.824957074372534*^9}, {3.82495710846437*^9, 3.824957111916686*^9}, 
+   3.8249572140853467`*^9, {3.824957292664584*^9, 3.8249572935706205`*^9}, {
+   3.824957328278338*^9, 3.8249573504450135`*^9}, {3.824957658690961*^9, 
+   3.8249576690828643`*^9}, {3.8249578383011894`*^9, 3.824957842956348*^9}, {
+   3.824957905403956*^9, 3.824957913433325*^9}, {3.8249579892851152`*^9, 
+   3.824958025988887*^9}, {3.824958297205475*^9, 3.8249583705582933`*^9}, {
+   3.8249585940783577`*^9, 3.8249586077283726`*^9}, {3.8249586657657146`*^9, 
+   3.8249586675621724`*^9}, {3.8249588646228347`*^9, 3.824958864810293*^9}, {
+   3.8249589877474117`*^9, 3.824959002495638*^9}, {3.8249590361918983`*^9, 
+   3.82495908744261*^9}, 3.8249592194754133`*^9, {3.8249599019438267`*^9, 
+   3.8249599034435077`*^9}, {3.824959977132428*^9, 3.8249599851305513`*^9}, 
+   3.824960031985132*^9, 3.824960152236334*^9, {3.825042990059902*^9, 
+   3.825043001760282*^9}, {3.8250430856412573`*^9, 3.8250431197416515`*^9}, {
+   3.8255855201018424`*^9, 3.8255855585599737`*^9}, 3.825585633795638*^9, 
+   3.8255857991981974`*^9}]
+},
+WindowSize->{1280, 629},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+Magnification:>1.05 Inherited,
+FrontEndVersion->"11.0 for Microsoft Windows (64-bit) (July 28, 2016)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[558, 20, 54460, 1157, 1803, "Input"]
+}
+]
+*)
+
