@@ -4,3 +4,5 @@ datalabels = "mu", "m1", "m2", "tb", "mx", "c1", "c2", "gl", "haa", "hbb",
 "omg", "psi", "nsi", "psd", "nsd"
 
 We need to check if we can use principal component analysis to reduce dimension.
+
+I noted the physcic package of python.
